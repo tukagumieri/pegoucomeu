@@ -204,15 +204,49 @@ section { position: relative; }
   transform-origin: 50% 100%;
   animation: hop 3.4s ease-in-out infinite;
 }
-.mascot img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 18px 22px rgba(24,21,15,.22)); }
-.mascot:hover img { animation: wiggle-sm .5s ease-in-out 2; }
+/* Mascote articulado: pernas, base, braço, corpo e olhos em camadas */
+.pc-rig {
+  position: absolute; inset: 0; margin: auto; display: block;
+  width: 100%; height: auto; max-height: 100%; aspect-ratio: 590 / 631;
+  filter: drop-shadow(0 18px 22px rgba(24,21,15,.22));
+}
+.pc-rig img, .pc-upper { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.mascot:hover .pc-rig { animation: wiggle-sm .5s ease-in-out 2; }
+
+/* joelhos: o corpo desce e as pernas dobram juntos */
+.pc-upper { animation: pc-agacha 1.8s ease-in-out infinite; }
+.pc-pernas { transform-origin: 50% 51.03%; animation: pc-joelho 1.8s ease-in-out infinite; }
+@keyframes pc-agacha { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(.8%); } }
+@keyframes pc-joelho { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.875); } }
+
+/* braço do joinha balançando */
+.pc-braco { transform-origin: 25.1% 30.1%; animation: pc-braco 2.8s ease-in-out infinite; }
+@keyframes pc-braco {
+  0%, 55%, 100% { transform: rotate(0); }
+  14% { transform: rotate(-11deg); }
+  26% { transform: rotate(5deg); }
+  38% { transform: rotate(-11deg); }
+  48% { transform: rotate(2deg); }
+}
+
+/* olhos: piscam juntos e, de vez em quando, uma piscadinha */
+.pc-olho { transform-origin: 50% 16.8%; }
+.pc-olho-esq { animation: pc-pisca-esq 7s linear infinite; }
+.pc-olho-dir { animation: pc-pisca-dir 7s linear infinite; }
+@keyframes pc-pisca-esq {
+  0%, 40%, 44%, 100% { transform: scaleY(1); }
+  42% { transform: scaleY(.08); }
+}
+@keyframes pc-pisca-dir {
+  0%, 40%, 44%, 84%, 97.5%, 100% { transform: scaleY(1); }
+  42% { transform: scaleY(.08); }
+  86%, 95.5% { transform: scaleY(.08); }
+}
 .mascot:focus-visible { outline: 3px solid var(--red); outline-offset: 6px; border-radius: 24px; }
 .mascot.jump { animation: bigJump .9s cubic-bezier(.3,.7,.4,1); }
 @keyframes hop {
-  0%, 100% { transform: translateY(0) scale(1.03, .97); }
-  12% { transform: translateY(0) scale(1, 1); }
-  50% { transform: translateY(-22px) rotate(1.5deg); }
-  88% { transform: translateY(0) scale(1, 1); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 @keyframes wiggle-sm { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-4deg); } 75% { transform: rotate(4deg); } }
 @keyframes bigJump {
@@ -507,6 +541,12 @@ section { position: relative; }
   .hero h1 .line > span { transform: none; }
   .hero-art { opacity: 1; transform: none; }
   .ticker-track { animation: marquee 60s linear infinite !important; }
+  .mascot-wrap { animation: none !important; }
+  .pc-upper { animation: pc-agacha 1.8s ease-in-out infinite !important; }
+  .pc-pernas { animation: pc-joelho 1.8s ease-in-out infinite !important; }
+  .pc-braco { animation: pc-braco 2.8s ease-in-out infinite !important; }
+  .pc-olho-esq { animation: pc-pisca-esq 7s linear infinite !important; }
+  .pc-olho-dir { animation: pc-pisca-dir 7s linear infinite !important; }
 }
 :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 8px; }
 

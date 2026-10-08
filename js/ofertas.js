@@ -17,7 +17,7 @@
 window.OFERTAS = {
   validade: "",
   itens: [
-    { nome: "Lata decorada de Natal Santa Espuress", categoria: "Especial de Natal", por: 6.99,  leve: 1, unidade: "cada",   imagem: "assets/ofertas/lata-natal-santa-espuress.jpg",   destaque: true },
+    { nome: "Lata decorada de Natal Santa Espuress", curto: "Lata de Natal", categoria: "Especial de Natal", por: 6.99,  leve: 1, unidade: "cada",   imagem: "assets/ofertas/lata-natal-santa-espuress.jpg",   destaque: true },
     { nome: "Pão de queijo Ludo Mix tradicional 1 kg", categoria: "Congelados",      por: 12.48, leve: 1, unidade: "pacote", imagem: "assets/ofertas/pao-de-queijo-ludo-mix.jpg",       destaque: true },
     { nome: "Pão Wickbold 43% integral 500 g",          categoria: "Padaria",         por: 11.99, leve: 3, unidade: "",       imagem: "assets/ofertas/pao-wickbold-integral.jpg",        destaque: true },
     { nome: "Iogurte Vigor morango 600 g (bandeja)",    categoria: "Frios e laticínios", por: 11.99, leve: 2, unidade: "",    imagem: "assets/ofertas/iogurte-vigor-morango.jpg",        destaque: true },

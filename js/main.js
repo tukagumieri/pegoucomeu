@@ -171,7 +171,7 @@
   const O = window.OFERTAS;
   if (!el || !O || !O.itens.length) return;
   const p = O.itens.find((i) => i.destaque) || O.itens[0];
-  const nomeCurto = p.nome.split(" ").slice(0, 3).join(" ");
+  const nomeCurto = p.curto || p.nome.split(" ").slice(0, 3).join(" ");
   el.innerHTML = `<small>${nomeCurto}</small><span class="price">${p.leve > 1 ? p.leve + " por " : ""}R$ ${p.por.toFixed(2).replace(".", ",")}</span>`;
 })();
 
