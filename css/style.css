@@ -267,7 +267,7 @@ section { position: relative; }
   overflow: hidden; padding: 16px 0;
   transform: rotate(-1.2deg); margin: 0 -10px;
 }
-.ticker-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+.ticker-track { display: flex; width: max-content; animation: marquee 32s linear infinite; will-change: transform; }
 .ticker:hover .ticker-track { animation-play-state: paused; }
 .ticker-item {
   display: flex; align-items: center; gap: 22px; padding-right: 22px;
@@ -275,7 +275,8 @@ section { position: relative; }
 }
 .ticker-item img { width: 28px; height: 28px; }
 .ticker-item .y { color: var(--yellow); }
-@keyframes marquee { to { transform: translateX(-50%); } }
+/* texto andando para a direita */
+@keyframes marquee { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 
 /* ---------- Cards de oferta ---------- */
 .offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 22px; }
@@ -505,6 +506,7 @@ section { position: relative; }
   .reveal { opacity: 1; transform: none; }
   .hero h1 .line > span { transform: none; }
   .hero-art { opacity: 1; transform: none; }
+  .ticker-track { animation: marquee 60s linear infinite !important; }
 }
 :focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 8px; }
 
